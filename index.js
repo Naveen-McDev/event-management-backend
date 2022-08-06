@@ -4,6 +4,7 @@ const dbConnection = require("./database/config");
 const cors = require("cors");
 const path = require("path");
 
+const PORT = process.env.PORT || 5000;
 // Server
 const app = express();
 
@@ -27,7 +28,7 @@ app.get("/*", (req, res) => {
 });
 
 // Listening PORT
-const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);
 });
