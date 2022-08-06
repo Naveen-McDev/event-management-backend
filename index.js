@@ -27,7 +27,7 @@ app.get("/*", (req, res) => {
 });
 
 // Listening PORT
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(port, () => {
-  console.log(`SERVER LISTENING ON PORT ${port}`);
+  console.log(`SERVER LISTENING ON PORT ${PORT}`);
 });

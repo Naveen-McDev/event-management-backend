@@ -1,5 +1,5 @@
 const Event = require("../models/Event");
-const User = require("../models/User");
+const User = require("../models/user");
 
 const eventExistsById = async (req, res, next) => {
   const { id } = req.params;
