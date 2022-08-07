@@ -12,7 +12,7 @@ const app = express();
 dbConnection();
 
 // Cors
-app.use(cors());
+app.use(cors({origin: '*'}));
 
 // Public path
 app.use(express.static("public"));
@@ -23,9 +23,9 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/events", require("./routes/events.js"));
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/public/index.html"));
-});
+// app.get("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/public/index.html"));
+// });
 
 // Listening PORT
 
