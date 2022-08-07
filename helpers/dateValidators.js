@@ -1,5 +1,7 @@
+// importing moment package
 const moment = require("moment");
 
+// is date
 const isDate = (value) => {
   if (!value) {
     return false;
@@ -13,6 +15,7 @@ const isDate = (value) => {
   }
 };
 
+// is date after
 const isDateAfter = (end, start) => {
   if (moment(start).isSameOrAfter(moment(end))) {
     return false;
@@ -20,6 +23,7 @@ const isDateAfter = (end, start) => {
   return true;
 };
 
+// export
 module.exports = {
   isDate,
   isDateAfter,

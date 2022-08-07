@@ -1,8 +1,11 @@
+// import jwt package
 const jwt = require("jsonwebtoken");
 
+// validate jwt 
 const validateJWT = (req, res, next) => {
   const token = req.header("x-token");
 
+  // if there is no token
   if (!token) {
     return res.status(401).json({
       ok: false,
@@ -26,4 +29,5 @@ const validateJWT = (req, res, next) => {
   next()
 }
 
+// export
 module.exports = validateJWT;

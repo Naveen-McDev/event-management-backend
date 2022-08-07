@@ -1,10 +1,17 @@
+//express package
 const express = require("express");
+//dotenv package
 require("dotenv").config();
+//importing database config file from database folder
 const dbConnection = require("./database/config");
+//cors package
 const cors = require("cors");
+//path
 const path = require("path");
 
+//PORT for running the web server
 const PORT = process.env.PORT || 5000;
+
 // Server
 const app = express();
 
@@ -28,7 +35,6 @@ app.use("/api/events", require("./routes/events.js"));
 // });
 
 // Listening PORT
-
 app.listen(PORT, () => {
   console.log(`SERVER LISTENING ON PORT ${PORT}`);
 });

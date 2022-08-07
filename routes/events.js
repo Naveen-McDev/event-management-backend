@@ -2,31 +2,42 @@
   Events routes -> /api/events
 */
 
+// router form express
 const { Router } = require("express");
+// check from express validator
 const { check } = require("express-validator");
+// importing controllers for event
 const {
   getEvents,
   createEvent,
   updateEvent,
   deleteEvent,
 } = require("../controllers/events");
+// importing database validators
 const {
   eventExistsById,
   isEventOwner,
 } = require("../helpers/databaseValidators");
+// importing helpers
 const { isDate, isDateAfter } = require("../helpers/dateValidators");
+// importing validatefields middleware
 const validateFields = require("../middlewares/validateFields");
+// importing validatejwt middleware
 const validateJWT = require("../middlewares/validateJWT");
 
 const router = Router();
 
+// validatejwt middleware
 router.use(validateJWT);
 
+// get events route
 router.get("/", getEvents);
 
+// post event route
 router.post(
   "/",
   [
+    // validation
     check("title", "Title is required").not().isEmpty(),
     check("title", "Title length must be max 32 characters").isLength({
       max: 32,
@@ -48,9 +59,11 @@ router.post(
   createEvent
 );
 
+// updating event route
 router.put(
   "/:id",
   [
+    // validation
     check("id", "Invalid event ID.").isMongoId(),
     check("title", "Title is required").not().isEmpty(),
     check("title", "Title length must be max 32 characters").isLength({
@@ -72,9 +85,11 @@ router.put(
   updateEvent
 );
 
+// delete event route
 router.delete(
   "/:id",
   [
+    // validation
     check("id", "Invalid event ID.").isMongoId(),
     validateFields,
     eventExistsById,
@@ -83,4 +98,5 @@ router.delete(
   deleteEvent
 );
 
+// export
 module.exports = router;
